@@ -28,6 +28,12 @@ func (r *NodeManagementDestinationListDataType) UpdateList(remoteWrite, persist 
 	return data, success
 }
 
+// helper type for easier filtering a specific UseCase element
+type UseCaseFilter struct {
+	Actor       UseCaseActorType
+	UseCaseName UseCaseNameType
+}
+
 // NodeManagementUseCaseDataType
 
 // find the matching UseCaseInformation index for
@@ -153,14 +159,13 @@ func (n *NodeManagementUseCaseDataType) SetAvailability(
 // a provided FeatureAddressType, UseCaseActorType and UseCaseNameType
 func (n *NodeManagementUseCaseDataType) RemoveUseCaseSupport(
 	address FeatureAddressType,
-	actor UseCaseActorType,
-	useCaseName UseCaseNameType,
+	filter UseCaseFilter,
 ) {
 	nmMux.Lock()
 	defer nmMux.Unlock()
 
 	// is there an entry for the entity address, actor and usecase name
-	usecaseIndex, ok := n.useCaseInformationIndex(address, actor, useCaseName)
+	usecaseIndex, ok := n.useCaseInformationIndex(address, filter.Actor, filter.UseCaseName)
 	if !ok {
 		return
 	}
@@ -173,7 +178,7 @@ func (n *NodeManagementUseCaseDataType) RemoveUseCaseSupport(
 			continue
 		}
 
-		item.Remove(useCaseName)
+		item.Remove(filter.UseCaseName)
 
 		// only add the item if there are any usecases left
 		if len(item.UseCaseSupport) == 0 {
