@@ -472,17 +472,17 @@ func (_c *EntityLocalInterface_GetOrAddFeature_Call) RunAndReturn(run func(model
 	return _c
 }
 
-// HasUseCaseSupport provides a mock function with given fields: actor, useCaseName
-func (_m *EntityLocalInterface) HasUseCaseSupport(actor model.UseCaseActorType, useCaseName model.UseCaseNameType) bool {
-	ret := _m.Called(actor, useCaseName)
+// HasUseCaseSupport provides a mock function with given fields: _a0
+func (_m *EntityLocalInterface) HasUseCaseSupport(_a0 model.UseCaseFilter) bool {
+	ret := _m.Called(_a0)
 
 	if len(ret) == 0 {
 		panic("no return value specified for HasUseCaseSupport")
 	}
 
 	var r0 bool
-	if rf, ok := ret.Get(0).(func(model.UseCaseActorType, model.UseCaseNameType) bool); ok {
-		r0 = rf(actor, useCaseName)
+	if rf, ok := ret.Get(0).(func(model.UseCaseFilter) bool); ok {
+		r0 = rf(_a0)
 	} else {
 		r0 = ret.Get(0).(bool)
 	}
@@ -496,15 +496,14 @@ type EntityLocalInterface_HasUseCaseSupport_Call struct {
 }
 
 // HasUseCaseSupport is a helper method to define mock.On call
-//   - actor model.UseCaseActorType
-//   - useCaseName model.UseCaseNameType
-func (_e *EntityLocalInterface_Expecter) HasUseCaseSupport(actor interface{}, useCaseName interface{}) *EntityLocalInterface_HasUseCaseSupport_Call {
-	return &EntityLocalInterface_HasUseCaseSupport_Call{Call: _e.mock.On("HasUseCaseSupport", actor, useCaseName)}
+//   - _a0 model.UseCaseFilter
+func (_e *EntityLocalInterface_Expecter) HasUseCaseSupport(_a0 interface{}) *EntityLocalInterface_HasUseCaseSupport_Call {
+	return &EntityLocalInterface_HasUseCaseSupport_Call{Call: _e.mock.On("HasUseCaseSupport", _a0)}
 }
 
-func (_c *EntityLocalInterface_HasUseCaseSupport_Call) Run(run func(actor model.UseCaseActorType, useCaseName model.UseCaseNameType)) *EntityLocalInterface_HasUseCaseSupport_Call {
+func (_c *EntityLocalInterface_HasUseCaseSupport_Call) Run(run func(_a0 model.UseCaseFilter)) *EntityLocalInterface_HasUseCaseSupport_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(model.UseCaseActorType), args[1].(model.UseCaseNameType))
+		run(args[0].(model.UseCaseFilter))
 	})
 	return _c
 }
@@ -514,7 +513,7 @@ func (_c *EntityLocalInterface_HasUseCaseSupport_Call) Return(_a0 bool) *EntityL
 	return _c
 }
 
-func (_c *EntityLocalInterface_HasUseCaseSupport_Call) RunAndReturn(run func(model.UseCaseActorType, model.UseCaseNameType) bool) *EntityLocalInterface_HasUseCaseSupport_Call {
+func (_c *EntityLocalInterface_HasUseCaseSupport_Call) RunAndReturn(run func(model.UseCaseFilter) bool) *EntityLocalInterface_HasUseCaseSupport_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -754,36 +753,35 @@ func (_c *EntityLocalInterface_RemoveAllUseCaseSupports_Call) RunAndReturn(run f
 	return _c
 }
 
-// RemoveUseCaseSupport provides a mock function with given fields: actor, useCaseName
-func (_m *EntityLocalInterface) RemoveUseCaseSupport(actor model.UseCaseActorType, useCaseName model.UseCaseNameType) {
-	_m.Called(actor, useCaseName)
+// RemoveUseCaseSupports provides a mock function with given fields: _a0
+func (_m *EntityLocalInterface) RemoveUseCaseSupports(_a0 []model.UseCaseFilter) {
+	_m.Called(_a0)
 }
 
-// EntityLocalInterface_RemoveUseCaseSupport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveUseCaseSupport'
-type EntityLocalInterface_RemoveUseCaseSupport_Call struct {
+// EntityLocalInterface_RemoveUseCaseSupports_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveUseCaseSupports'
+type EntityLocalInterface_RemoveUseCaseSupports_Call struct {
 	*mock.Call
 }
 
-// RemoveUseCaseSupport is a helper method to define mock.On call
-//   - actor model.UseCaseActorType
-//   - useCaseName model.UseCaseNameType
-func (_e *EntityLocalInterface_Expecter) RemoveUseCaseSupport(actor interface{}, useCaseName interface{}) *EntityLocalInterface_RemoveUseCaseSupport_Call {
-	return &EntityLocalInterface_RemoveUseCaseSupport_Call{Call: _e.mock.On("RemoveUseCaseSupport", actor, useCaseName)}
+// RemoveUseCaseSupports is a helper method to define mock.On call
+//   - _a0 []model.UseCaseFilter
+func (_e *EntityLocalInterface_Expecter) RemoveUseCaseSupports(_a0 interface{}) *EntityLocalInterface_RemoveUseCaseSupports_Call {
+	return &EntityLocalInterface_RemoveUseCaseSupports_Call{Call: _e.mock.On("RemoveUseCaseSupports", _a0)}
 }
 
-func (_c *EntityLocalInterface_RemoveUseCaseSupport_Call) Run(run func(actor model.UseCaseActorType, useCaseName model.UseCaseNameType)) *EntityLocalInterface_RemoveUseCaseSupport_Call {
+func (_c *EntityLocalInterface_RemoveUseCaseSupports_Call) Run(run func(_a0 []model.UseCaseFilter)) *EntityLocalInterface_RemoveUseCaseSupports_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(model.UseCaseActorType), args[1].(model.UseCaseNameType))
+		run(args[0].([]model.UseCaseFilter))
 	})
 	return _c
 }
 
-func (_c *EntityLocalInterface_RemoveUseCaseSupport_Call) Return() *EntityLocalInterface_RemoveUseCaseSupport_Call {
+func (_c *EntityLocalInterface_RemoveUseCaseSupports_Call) Return() *EntityLocalInterface_RemoveUseCaseSupports_Call {
 	_c.Call.Return()
 	return _c
 }
 
-func (_c *EntityLocalInterface_RemoveUseCaseSupport_Call) RunAndReturn(run func(model.UseCaseActorType, model.UseCaseNameType)) *EntityLocalInterface_RemoveUseCaseSupport_Call {
+func (_c *EntityLocalInterface_RemoveUseCaseSupports_Call) RunAndReturn(run func([]model.UseCaseFilter)) *EntityLocalInterface_RemoveUseCaseSupports_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -821,9 +819,9 @@ func (_c *EntityLocalInterface_SetDescription_Call) RunAndReturn(run func(*model
 	return _c
 }
 
-// SetUseCaseAvailability provides a mock function with given fields: actor, useCaseName, available
-func (_m *EntityLocalInterface) SetUseCaseAvailability(actor model.UseCaseActorType, useCaseName model.UseCaseNameType, available bool) {
-	_m.Called(actor, useCaseName, available)
+// SetUseCaseAvailability provides a mock function with given fields: filter, available
+func (_m *EntityLocalInterface) SetUseCaseAvailability(filter model.UseCaseFilter, available bool) {
+	_m.Called(filter, available)
 }
 
 // EntityLocalInterface_SetUseCaseAvailability_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetUseCaseAvailability'
@@ -832,16 +830,15 @@ type EntityLocalInterface_SetUseCaseAvailability_Call struct {
 }
 
 // SetUseCaseAvailability is a helper method to define mock.On call
-//   - actor model.UseCaseActorType
-//   - useCaseName model.UseCaseNameType
+//   - filter model.UseCaseFilter
 //   - available bool
-func (_e *EntityLocalInterface_Expecter) SetUseCaseAvailability(actor interface{}, useCaseName interface{}, available interface{}) *EntityLocalInterface_SetUseCaseAvailability_Call {
-	return &EntityLocalInterface_SetUseCaseAvailability_Call{Call: _e.mock.On("SetUseCaseAvailability", actor, useCaseName, available)}
+func (_e *EntityLocalInterface_Expecter) SetUseCaseAvailability(filter interface{}, available interface{}) *EntityLocalInterface_SetUseCaseAvailability_Call {
+	return &EntityLocalInterface_SetUseCaseAvailability_Call{Call: _e.mock.On("SetUseCaseAvailability", filter, available)}
 }
 
-func (_c *EntityLocalInterface_SetUseCaseAvailability_Call) Run(run func(actor model.UseCaseActorType, useCaseName model.UseCaseNameType, available bool)) *EntityLocalInterface_SetUseCaseAvailability_Call {
+func (_c *EntityLocalInterface_SetUseCaseAvailability_Call) Run(run func(filter model.UseCaseFilter, available bool)) *EntityLocalInterface_SetUseCaseAvailability_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(model.UseCaseActorType), args[1].(model.UseCaseNameType), args[2].(bool))
+		run(args[0].(model.UseCaseFilter), args[1].(bool))
 	})
 	return _c
 }
@@ -851,7 +848,7 @@ func (_c *EntityLocalInterface_SetUseCaseAvailability_Call) Return() *EntityLoca
 	return _c
 }
 
-func (_c *EntityLocalInterface_SetUseCaseAvailability_Call) RunAndReturn(run func(model.UseCaseActorType, model.UseCaseNameType, bool)) *EntityLocalInterface_SetUseCaseAvailability_Call {
+func (_c *EntityLocalInterface_SetUseCaseAvailability_Call) RunAndReturn(run func(model.UseCaseFilter, bool)) *EntityLocalInterface_SetUseCaseAvailability_Call {
 	_c.Call.Return(run)
 	return _c
 }

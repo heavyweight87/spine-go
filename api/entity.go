@@ -49,17 +49,12 @@ type EntityLocalInterface interface {
 		scenarios []model.UseCaseScenarioSupportType,
 	)
 	// Check if a use case is already added
-	HasUseCaseSupport(
-		actor model.UseCaseActorType,
-		useCaseName model.UseCaseNameType) bool
-	// Remove support for a usecase
-	RemoveUseCaseSupport(
-		actor model.UseCaseActorType,
-		useCaseName model.UseCaseNameType,
-	)
+	HasUseCaseSupport(model.UseCaseFilter) bool
+	// Remove one or multiple usecases
+	RemoveUseCaseSupports([]model.UseCaseFilter)
 	// Set the availability of a usecase. This may only be used for usescases
 	// that act as a client within the usecase!
-	SetUseCaseAvailability(actor model.UseCaseActorType, useCaseName model.UseCaseNameType, available bool)
+	SetUseCaseAvailability(filter model.UseCaseFilter, available bool)
 	// Remove all usecases
 	RemoveAllUseCaseSupports()
 
